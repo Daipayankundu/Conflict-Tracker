@@ -33,7 +33,7 @@ function getEventColor(h: Hotspot) {
 }
 
 export default function Map({ hotspots }: { hotspots: Hotspot[] }) {
-  const globeRef = useRef<any>();
+  const globeRef = useRef<any>(null);
   const [selectedHotspot, setSelectedHotspot] = useState<Hotspot | null>(null);
 
   // Focus on initial position but DO NOT auto-rotate
