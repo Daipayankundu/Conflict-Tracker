@@ -4,6 +4,11 @@ from pydantic import BaseModel
 from typing import List
 import logging
 
+import sys
+import os
+# Ensure Vercel can find the adjacent files in the api folder
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 # Import our custom modules
 from scrapers import fetch_all_osint
 from anomaly_engine import calculate_threat_index

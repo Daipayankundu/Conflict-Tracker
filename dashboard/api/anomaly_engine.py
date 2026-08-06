@@ -49,10 +49,12 @@ import newspaper
 import nltk
 import logging
 
-# Ensure NLTK tokenizers are downloaded on the Render server
+# Ensure NLTK tokenizers are downloaded on the Render/Vercel server
+# Vercel is a Read-Only filesystem, so we MUST use /tmp/
 try:
-    nltk.download('punkt', quiet=True)
-    nltk.download('punkt_tab', quiet=True)
+    nltk.data.path.append("/tmp/nltk_data")
+    nltk.download('punkt', download_dir='/tmp/nltk_data', quiet=True)
+    nltk.download('punkt_tab', download_dir='/tmp/nltk_data', quiet=True)
 except Exception as e:
     logging.warning(f"NLTK download failed: {e}")
 
